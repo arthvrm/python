@@ -158,4 +158,3 @@ def start_game():
         print("\n")
 
 
-start_game()
