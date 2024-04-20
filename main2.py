@@ -133,6 +133,8 @@ def move(player: str = None, move_from: tuple = None, move_to: tuple = None) -> 
     what_piece(move_from=move_from, move_to=move_to)
 
 
+history = []
+
 @app.get("/start")
 def start_game():
     show_board()
@@ -146,4 +148,14 @@ def start_game():
         mtx = int(input("enter move to x:"))
         mty = int(input("enter move to y:"))
         move(player=color, move_from=(mfx, mfy), move_to=(mtx, mty))
+        step = f"({mfx}, {mfy}, {mtx}, {mty})"
+        history.append(step)
         show_board()
+        for i in history:
+            if i == ')':
+                continue
+            print(i, end=' ')
+        print("\n")
+
+
+start_game()
